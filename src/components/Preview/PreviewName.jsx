@@ -3,6 +3,8 @@ import { Button, Input, styled } from "@100mslive/roomkit-react";
 import { isStreamingKit } from "../../common/utils";
 
 const PreviewName = ({ name, onChange, onJoin, enableJoin }) => {
+  const learner = localStorage.getItem('learner');
+  const type = localStorage.getItem('type');
   const formSubmit = e => {
     e.preventDefault();
   };
@@ -18,7 +20,7 @@ const PreviewName = ({ name, onChange, onJoin, enableJoin }) => {
         autoFocus
         autoComplete="name"
       />
-      <Button type="submit" disabled={!name || !enableJoin} onClick={onJoin}>
+      <Button type="submit" disabled={!name || !enableJoin || learner=== "null" || type === "null"} onClick={onJoin}>
         {isStreamingKit() ? "Join Studio" : "Join Room"}
       </Button>
     </Form>
