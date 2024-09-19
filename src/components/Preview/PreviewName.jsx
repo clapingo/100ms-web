@@ -8,6 +8,7 @@ const PreviewName = ({ name, onChange, onJoin, enableJoin }) => {
   const formSubmit = e => {
     e.preventDefault();
   };
+  console.log("Learner and type", learner, type)
   return (
     <Form onSubmit={formSubmit}>
       <Input
@@ -20,7 +21,7 @@ const PreviewName = ({ name, onChange, onJoin, enableJoin }) => {
         autoFocus
         autoComplete="name"
       />
-      <Button type="submit" disabled={!name || !enableJoin || learner=== "null" || type === "null"} onClick={onJoin}>
+      <Button type="submit" disabled={!name || !enableJoin || !learner || !type || learner=== "null" || type === "null"} onClick={onJoin}>
         {isStreamingKit() ? "Join Studio" : "Join Room"}
       </Button>
     </Form>
